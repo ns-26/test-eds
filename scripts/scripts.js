@@ -14,7 +14,7 @@ import {
   getMetadata,
   loadScript,
   toCamelCase,
-  toClassName
+  toClassName,
 } from './aem.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
@@ -57,7 +57,7 @@ const pluginContext = {
  * @param {Element} main The container element
  */
 function buildHeroBlock(main) {
-  const h1 = main.querySelector('h1'); 
+  const h1 = main.querySelector('h1');
   const picture = main.querySelector('picture');
   // eslint-disable-next-line no-bitwise
   if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
@@ -162,9 +162,9 @@ async function loadLazy(doc) {
   || Object.keys(getAllMetadata('campaign')).length
   || Object.keys(getAllMetadata('audience')).length)) {
   // eslint-disable-next-line import/no-relative-packages
-  const { loadLazy: runLazy } = await import('../plugins/experimentation/src/index.js');
-  await runLazy(document, { audiences: AUDIENCES }, pluginContext);
-}
+    const { loadLazy: runLazy } = await import('../plugins/experimentation/src/index.js');
+    await runLazy(document, { audiences: AUDIENCES }, pluginContext);
+  }
 }
 
 /**
